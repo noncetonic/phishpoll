@@ -1,5 +1,6 @@
 Installing PhishPoll is easy; just follow these steps.
 
 1.) Import phishpoll.sqli either via commandline or phpMyAdmin
-2.) edit includes/db_conf.php to contain proper mysql connection values
-3.) Phish away!
+2.) edit includes/db_conf.php.example to contain proper mysql connection values
+3.) rename includes/db_conf.php.example to includes/db_conf.php
+4.) Phish away!
