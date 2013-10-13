@@ -1,10 +1,7 @@
 <?php
 
 // MySQL Info
-$mysql_host = "<host>";
-$mysql_user = "<username>";
-$mysql_pass = "<password>";
-$mysql_db = "<database>";
+include('db_conf.php');
 // Mysql Info
 
 // Create connection
