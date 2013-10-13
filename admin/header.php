@@ -311,7 +311,7 @@ $(document).pngFix( );
                 <div class="select_sub" id="toolsSub">
                         <ul class="sub">
                                 <li><a href="tools.php?page=local">Local 404 Redirect</a></li>
-                                <li><a href="#">Coming Soon</a></li>
+                                <li><a href="siteclone.php">Clone Site</a></li>
                                 <li><a href="#">Coming Soon</a></li>
                         </ul>
                 </div>
