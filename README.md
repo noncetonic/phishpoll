@@ -16,9 +16,9 @@ PhishPoll is a PHP-based framework for creating, managing, and executing phishin
 * Markdown-based Email Template Creator
 * Browser And OS Tracking
 * IP-based Banning
+* Clone Websites
 
 ## TODO
-* Add Website Cloner
 * Store Created Templates For Later Use
 * Migrate User Password Hashes To PHPass
 * Add Permissions Per User
