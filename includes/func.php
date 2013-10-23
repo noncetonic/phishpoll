@@ -169,7 +169,6 @@ function showStats($numResults = '1')
         $value = htmlspecialchars($value,  ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     }
 
-    $sanitize = 'sanitize';
 	$sanResults = mysql_real_escape_string(($numResults - 1) * 15);
 	$showStats = "SELECT * FROM hits ORDER BY id DESC LIMIT $sanResults, 15";
 
