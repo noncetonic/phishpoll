@@ -166,7 +166,7 @@ function showStats($numResults = '1')
 
     function filter(&$value) 
     {
-        $value = htmlspecialchars($value,  ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+        $value = htmlspecialchars($value,  ENT_QUOTES);
     }
 
 	$sanResults = mysql_real_escape_string(($numResults - 1) * 15);
