@@ -164,6 +164,12 @@ function showStats($numResults = '1')
 {
 	global $con;
 
+    function filter(&$value) 
+    {
+        $value = htmlspecialchars($value,  ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+    }
+
+    $sanitize = 'sanitize';
 	$sanResults = mysql_real_escape_string(($numResults - 1) * 15);
 	$showStats = "SELECT * FROM hits ORDER BY id DESC LIMIT $sanResults, 15";
 
@@ -171,7 +177,8 @@ function showStats($numResults = '1')
 	
 	$i = 0;		
 	while($data = mysqli_fetch_array($results))
-	{
+    {
+        array_walk_recursive($data, "filter");
 		if($i % 2 == 0)
 		{
 			echo <<< END
