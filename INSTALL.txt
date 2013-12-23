@@ -6,4 +6,6 @@ Installing PhishPoll is easy; just follow these steps.
 4.) rename includes/createAdmin.php.disabled to includes/createAdmin.php
 5.) visit website.com/includes/createAdmin.php and fill out form
 6.) createAdmin.php should automatically delete itself but ensure that it is deleted
-7.) Phish away!
+7.) edit includes/smtp_settings.php.example to contain proper SMTP details
+8.) rename includes/smtp_settings.php.example to includes/smtp_settings.php
+9.) Phish away!

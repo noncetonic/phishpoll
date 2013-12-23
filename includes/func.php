@@ -383,7 +383,8 @@ function listCampaigns()
 function goPhish($campaignName,$emailFrom,$targets,$subject)
 {
 	global $con;
-	
+    include("PHPMailer/PHPMailerAutoload.php");
+    include("smtp_settings.php");
 	$sanName = mysql_real_escape_string($campaignName); 
 	$sanFrom = mysql_real_escape_string($emailFrom);
 	
@@ -406,12 +407,29 @@ function goPhish($campaignName,$emailFrom,$targets,$subject)
 		$phishURL = $url['url'] . "/?campaign=" . $id['id'] . "&uid=" . $uid;
 		$email = str_replace("@@url@@", $phishURL, $template['template']);
 
-		// To send HTML mail, the Content-type header must be set
-		$headers  = 'MIME-Version: 1.0' . "\r\n";
-		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+        $mail = new PHPMailer();
+        $mail->IsSMTP();
+        $mail->CharSet = 'UTF-8';
+        $mail->Host       = $smtpHost;
+        $mail->SMTPDebug  = 0;
+        $mail->SMTPAuth   = true;
+        $mail->Port       = $smtpPort;
+        $mail->Username   = $smtpUsername;
+        $mail->Password   = $smtpPassword;
+        $mail->SMTPSecure   = "tls"; // comment out or change to "ssl" or "tls" depending on your SMTP server settings
+        $mail->Subject  = $subject;
+        $mail->MsgHTML($email);
+        $mail->AddAddress($line);
+        $mail->SetFrom($emailFrom);
+        // To send HTML mail, the Content-type header must be set
+		//$headers  = 'MIME-Version: 1.0' . "\r\n";
+		//$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 //		$headers .= 'From: <' . $emailFrom . ">\r\n";
 
-		mail($line, $subject, $email, $headers);
+        if(!$mail->Send())
+        {
+            echo "Mailer Error: " . $mail->ErrorInfo;
+        }
 	}
 }
 

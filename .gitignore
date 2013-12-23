@@ -1,3 +1,7 @@
 includes/db_conf.php
 index.php
+<<<<<<< HEAD
 includes/createAdmin.php
+=======
+includes/smtp_settings.php
+>>>>>>> smtpEmailing

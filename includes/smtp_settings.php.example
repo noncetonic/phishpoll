@@ -1,0 +1,6 @@
+<?php
+$smtpHost = "";
+$smtpPort = "";
+$smtpUsername = "";
+$smtpPassword = "";
+?>
