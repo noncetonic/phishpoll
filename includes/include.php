@@ -28,6 +28,9 @@ xmlhttp.setRequestHeader("Connection", "close");
 xmlhttp.send(params);
 </script>
 <script>
+<?php
+// thanks to Mark Ignacio ( https://github.com/mark-ignacio ) for helping with 
+// this function
 var url = document.URL + "includes/tracker.php";
 $(document).ready(function() {
     $('a').click(function(e) {
