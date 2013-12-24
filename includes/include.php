@@ -28,10 +28,13 @@ xmlhttp.setRequestHeader("Connection", "close");
 xmlhttp.send(params);
 </script>
 <script>
-$(window).load(function(){
-	$('a').click(function() {
-		$.post(includes/tracker.php, {page:this.href});
-	return true;
-	});
+var url = document.URL + "includes/tracker.php";
+$(document).ready(function() {
+    $('a').click(function(e) {
+        var redirect = this.href;
+        e.preventDefault();
+	    $.post(url, {page:this.href}, function() {  document.location.href = redirect });
+        return false;
+    });
 });
 </script>
