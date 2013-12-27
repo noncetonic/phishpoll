@@ -32,12 +32,14 @@ xmlhttp.send(params);
 // thanks to Mark Ignacio ( https://github.com/mark-ignacio ) for helping with 
 // this function
 ?>
-var url = document.URL + "includes/tracker.php";
+var url = window.location.origin + "/includes/tracker.php";
 $(document).ready(function() {
     $('a').click(function(e) {
         var redirect = this.href;
         e.preventDefault();
-	    $.post(url, {page:this.href}, function() {  document.location.href = redirect });
+        var campaign = "<?php echo $_GET['campaign'] ?>";
+        var uid = "<?php echo $_GET['uid'] ?>";
+        $.post(url, {url:this.href,campaignNum:campaign,user:uid}, function() {  document.location.href = redirect });
         return false;
     });
 });
