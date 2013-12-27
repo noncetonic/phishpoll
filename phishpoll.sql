@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 08, 2013 at 08:43 AM
+-- Generation Time: Dec 27, 2013 at 02:32 PM
 -- Server version: 5.5.31
 -- PHP Version: 5.3.10-1ubuntu3.6
 
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `blacklist` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `ip` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=383769 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -50,6 +50,21 @@ CREATE TABLE IF NOT EXISTS `campaigns` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `clicks`
+--
+
+CREATE TABLE IF NOT EXISTS `clicks` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user` text NOT NULL,
+  `campaign` int(11) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `url` text NOT NULL,
+  KEY `id` (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `hits`
 --
 
@@ -64,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `hits` (
   `os` varchar(50) NOT NULL,
   `uid` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=110 ;
 
 -- --------------------------------------------------------
 
@@ -78,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(32) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
