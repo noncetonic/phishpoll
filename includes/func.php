@@ -449,13 +449,24 @@ function siteClone($url)
 
         $data = curl_exec($ch);
         curl_close($ch);
-        
+
         $file = fopen("../index.php", "w");
         $template = str_replace("<head>", "<head><?php include('includes/include.php') ?><base href=" . $url . " target=\"_blank\">", $data);
         fwrite($file, $template);
         fclose($file);
 
-        
         return "Check index.php";
+}
+
+function trackClick($url,$campaign,$user)
+{
+    global $con;
+    $sanURL = htmlspecialchars($url,ENT_QUOTES);
+    $sanCampaign = htmlspecialchars($campaign, ENT_QUOTES);
+    $sanUser = htmlspecialchars($user, ENT_QUOTES);
+
+    $time = date("M j H:m:s"); 
+    $addClick = "INSERT INTO clicks (user, campaign, url) VALUES ('$sanUser', '$sanCampaign', '$sanURL')";
+    $result = mysqli_query($con, $addClick);
 }
 ?>
