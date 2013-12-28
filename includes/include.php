@@ -3,18 +3,21 @@ $ip = $_SERVER['REMOTE_ADDR'];
 $host = gethostbyaddr($_SERVER['REMOTE_ADDR']);
 include('func.php');
 checkBanned($ip);
-if(!isset($_GET['campaign']) && !empty($_GET['campaign']))
+
+if(!isset($_GET['campaign']) || empty($_GET['campaign']))
 {
-    if(!isset($_GET['uid']) && !empty($_GET['uid']))
+    if(!isset($_GET['uid']) || empty($_GET['uid']))
     {
         noCrawlers();
     }
 }
+
 if(isset($_POST['os']))
 {
 	trackIP($_POST['browserName'],$_POST['browserVersion'],$_POST['os'],$ip,$host, $_GET['campaign']);
 }
 ?>
+
 <script language="JavaScript" type="text/javascript" src="/js/jquery-1.4.1.min.js"></script>
 <script src="/js/browser.js" ></script>
 <script>
